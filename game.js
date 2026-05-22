@@ -10,13 +10,13 @@
 // ============================================================
 const GRID_SIZE = 7;
 const TILE_TYPES = [
-  { id: 0, emoji: '🌿', name: 'Aloe',      color: '#4CAF50' },
-  { id: 1, emoji: '🥤', name: 'Batido',    color: '#2196F3' },
-  { id: 2, emoji: '⚡', name: 'Té',        color: '#FF9800' },
-  { id: 3, emoji: '💪', name: 'Proteína',  color: '#9C27B0' },
-  { id: 4, emoji: '🍓', name: 'Vitaminas', color: '#E91E63' },
-  { id: 5, emoji: '⚽', name: 'CR7',       color: '#F44336' },
-  { id: 6, emoji: '❤️', name: 'Wellness',  color: '#FF5252' },
+  { id: 0, img: 'aloe_concentrate',  name: 'Aloe',       color: '#4CAF50', glow: 'rgba(76,175,80,0.7)'   },
+  { id: 1, img: 'shake_f1',          name: 'Batido F1',  color: '#8D6E63', glow: 'rgba(141,110,99,0.7)'  },
+  { id: 2, img: 'tea_concentrate',   name: 'Té',         color: '#FF8F00', glow: 'rgba(255,143,0,0.7)'   },
+  { id: 3, img: 'protein_drink',     name: 'Proteína',   color: '#7B1FA2', glow: 'rgba(123,31,162,0.7)'  },
+  { id: 4, img: 'liftoff',           name: 'Liftoff',    color: '#D32F2F', glow: 'rgba(211,47,47,0.7)'   },
+  { id: 5, img: 'cr7_drive',         name: 'CR7 Drive',  color: '#1565C0', glow: 'rgba(21,101,192,0.7)'  },
+  { id: 6, img: 'protein_bar',       name: 'Prot. Bar',  color: '#5D4037', glow: 'rgba(93,64,55,0.7)'    },
 ];
 
 const REWARDS = [
@@ -451,24 +451,46 @@ function createTileEl(r, c) {
   div.dataset.r = r;
   div.dataset.c = c;
 
-  if (cell.special === 'bomb') div.classList.add('special-bomb');
-  if (cell.special === 'lightning') div.classList.add('special-lightning');
-  if (cell.special === 'rainbow') div.classList.add('special-rainbow');
+  // Color glow border based on product
+  div.style.setProperty('--tile-glow', cell.type.glow || 'rgba(106,174,106,0.6)');
+  div.style.setProperty('--tile-color', cell.type.color || '#4CAF50');
 
-  const emoji = document.createElement('span');
-  emoji.className = 'tile-emoji';
-  emoji.textContent = cell.type.emoji;
-  div.appendChild(emoji);
+  // Determine image key
+  let imgKey = cell.type.img;
+  if (cell.special === 'bomb')      { imgKey = 'special_bomb';      div.classList.add('special-bomb'); }
+  if (cell.special === 'lightning') { imgKey = 'special_lightning'; div.classList.add('special-lightning'); }
+  if (cell.special === 'rainbow')   { imgKey = 'special_rainbow';   div.classList.add('special-rainbow'); }
 
-  // Shine effect
+  // Product image
+  const imgEl = document.createElement('img');
+  imgEl.className = 'tile-img';
+  imgEl.src = (typeof PRODUCT_IMAGES !== 'undefined' && PRODUCT_IMAGES[imgKey])
+    ? PRODUCT_IMAGES[imgKey]
+    : '';
+  imgEl.alt = cell.type.name;
+  imgEl.draggable = false;
+  div.appendChild(imgEl);
+
+  // Name label
+  const label = document.createElement('span');
+  label.className = 'tile-label';
+  label.textContent = cell.type.name;
+  div.appendChild(label);
+
+  // Shine
   const shine = document.createElement('div');
   shine.className = 'tile-shine';
   div.appendChild(shine);
 
-  // Touch & click events
-  div.addEventListener('click', () => onTileClick(r, c));
+  // Special crown/badge overlay
+  if (cell.special) {
+    const badge = document.createElement('div');
+    badge.className = 'tile-special-badge';
+    badge.textContent = cell.special === 'bomb' ? '💥' : cell.special === 'lightning' ? '⚡' : '🌈';
+    div.appendChild(badge);
+  }
 
-  // Touch drag support
+  div.addEventListener('click', () => onTileClick(r, c));
   div.addEventListener('touchstart', onTouchStart, { passive: true });
   div.addEventListener('touchend', onTouchEnd, { passive: true });
 
