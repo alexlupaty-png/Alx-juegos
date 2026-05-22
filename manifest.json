@@ -1,0 +1,28 @@
+{
+  "name": "Herbal Kingdom Bolivia",
+  "short_name": "Herbal Kingdom",
+  "description": "Club Wellness Premium - Match 3 Game con productos Herbalife Bolivia",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#1A3A1A",
+  "theme_color": "#2D5A2D",
+  "lang": "es",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

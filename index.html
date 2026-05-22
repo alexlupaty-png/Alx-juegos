@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1C1C1A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Herbal Kingdom ALX">
+<link rel="manifest" href="manifest.json">
+<title>Herbal Kingdom Bolivia — ALX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="particles-container"></div>
+
+<!-- ============================================================
+     ALX CINEMATIC INTRO — Supercell-style brand reveal
+     ============================================================ -->
+<div id="alx-intro" class="alx-intro active">
+  <div class="alx-noise"></div>
+  <div class="alx-sweep"></div>
+  <div class="alx-ambient"></div>
+  <canvas id="alx-canvas" class="alx-canvas"></canvas>
+
+  <div class="alx-center" id="alx-center">
+    <div class="alx-preline" id="alx-preline">
+      <span class="alx-pre-dot"></span>
+      <span class="alx-pre-text">CLUB WELLNESS PREMIUM</span>
+      <span class="alx-pre-dot"></span>
+    </div>
+
+    <div class="alx-wordmark" id="alx-wordmark">
+      <svg class="alx-svg" viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="alxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#F5F0E8"/>
+            <stop offset="45%"  stop-color="#EDE6D6"/>
+            <stop offset="100%" stop-color="#C8B89A"/>
+          </linearGradient>
+          <linearGradient id="alxGoldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="transparent"/>
+            <stop offset="20%"  stop-color="#A8906A"/>
+            <stop offset="50%"  stop-color="#D4A853"/>
+            <stop offset="80%"  stop-color="#A8906A"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </linearGradient>
+          <filter id="alxGlow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="alxShadow">
+            <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.6)"/>
+          </filter>
+        </defs>
+        <!-- A -->
+        <path d="M 10,98 L 55,16 L 100,98"
+              stroke="url(#alxGrad)" stroke-width="7.5" fill="none"
+              stroke-linecap="round" stroke-linejoin="round"
+              filter="url(#alxShadow)" class="alx-path" id="path-A"/>
+        <line x1="27" y1="70" x2="83" y2="70"
+              stroke="url(#alxGoldLine)" stroke-width="4"
+              stroke-linecap="round" class="alx-path" id="path-bar"/>
+        <!-- L -->
+        <path d="M 118,16 L 118,98 L 170,98"
+              stroke="url(#alxGrad)" stroke-width="7.5" fill="none"
+              stroke-linecap="round" stroke-linejoin="round"
+              filter="url(#alxShadow)" class="alx-path" id="path-L"/>
+        <!-- X -->
+        <path d="M 190,16 L 272,98 M 272,16 L 190,98"
+              stroke="url(#alxGrad)" stroke-width="7.5" fill="none"
+              stroke-linecap="round" stroke-linejoin="round"
+              filter="url(#alxShadow)" class="alx-path" id="path-X"/>
+      </svg>
+    </div>
+
+    <div class="alx-divider" id="alx-divider">
+      <div class="alx-divider-line"></div>
+      <div class="alx-divider-gem">◆</div>
+      <div class="alx-divider-line"></div>
+    </div>
+
+    <div class="alx-subbrand" id="alx-subbrand">
+      <span class="alx-sub-leaf">🌿</span>
+      <span class="alx-sub-text">HERBAL KINGDOM BOLIVIA</span>
+    </div>
+
+    <div class="alx-tagline" id="alx-tagline">Nutrición · Energía · Bienestar</div>
+  </div>
+
+  <div class="alx-skip" id="alx-skip" onclick="skipIntro()">Toca para continuar</div>
+</div>
+
+<!-- ==================== SPLASH SCREEN ==================== -->
+<div id="splash-screen" class="screen">
+  <div class="splash-bg">
+    <div class="splash-circle c1"></div>
+    <div class="splash-circle c2"></div>
+    <div class="splash-circle c3"></div>
+  </div>
+  <div class="alx-watermark-splash">
+    <svg viewBox="0 0 70 30" xmlns="http://www.w3.org/2000/svg" class="alx-wm-svg">
+      <path d="M 2,26 L 12,4 L 22,26" stroke="#C8B89A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="6" y1="18" x2="18" y2="18" stroke="#D4A853" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M 27,4 L 27,26 L 39,26" stroke="#C8B89A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 44,4 L 67,26 M 67,4 L 44,26" stroke="#C8B89A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="splash-content">
+    <div class="logo-container" id="splash-logo">
+      <div class="logo-glow"></div>
+      <div class="logo-inner">
+        <div class="logo-leaf">🌿</div>
+        <div class="logo-text-wrap">
+          <span class="logo-title">HERBAL</span>
+          <span class="logo-subtitle">KINGDOM</span>
+          <span class="logo-country">BOLIVIA</span>
+        </div>
+      </div>
+      <div class="logo-tagline">Club Wellness Premium</div>
+    </div>
+    <div class="splash-loader">
+      <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+      <div class="loader-text" id="loader-text">Preparando tu bienestar...</div>
+    </div>
+    <div class="alx-powered">
+      <span class="alx-pow-label">powered by</span>
+      <svg viewBox="0 0 70 28" xmlns="http://www.w3.org/2000/svg" class="alx-pow-svg">
+        <path d="M 2,24 L 12,4 L 22,24" stroke="#A8906A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="6" y1="17" x2="18" y2="17" stroke="#D4A853" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M 28,4 L 28,24 L 40,24" stroke="#A8906A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 46,4 L 68,24 M 68,4 L 46,24" stroke="#A8906A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MAIN MENU ==================== -->
+<div id="main-menu" class="screen">
+  <div class="menu-bg">
+    <div class="menu-plants">
+      <div class="plant p1">🌿</div>
+      <div class="plant p2">🌱</div>
+      <div class="plant p3">🍃</div>
+      <div class="plant p4">🌿</div>
+    </div>
+    <!-- ALX subtle background watermark -->
+    <div class="alx-bg-watermark">
+      <svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" class="alx-bgwm-svg">
+        <path d="M 10,98 L 55,16 L 100,98" stroke="rgba(245,240,232,0.04)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="27" y1="70" x2="83" y2="70" stroke="rgba(212,168,83,0.05)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M 118,16 L 118,98 L 170,98" stroke="rgba(245,240,232,0.04)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 190,16 L 272,98 M 272,16 L 190,98" stroke="rgba(245,240,232,0.04)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="wood-panel"></div>
+  </div>
+
+  <!-- TOP BAR with ALX badge -->
+  <div class="top-bar">
+    <div class="player-info">
+      <div class="avatar">🧘</div>
+      <div class="player-details">
+        <div class="player-name" id="player-name-display">Wellness Star</div>
+        <div class="player-level">Nivel <span id="player-level-display">1</span></div>
+      </div>
+    </div>
+    <!-- ALX mini logo in top bar -->
+    <div class="alx-topbar-badge">
+      <svg viewBox="0 0 56 22" xmlns="http://www.w3.org/2000/svg" class="alx-topbar-svg">
+        <path d="M 1,19 L 9,3 L 17,19" stroke="#C8B89A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="4" y1="13" x2="14" y2="13" stroke="#D4A853" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 21,3 L 21,19 L 31,19" stroke="#C8B89A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 36,3 L 55,19 M 55,3 L 36,19" stroke="#C8B89A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="resources">
+      <div class="resource-chip coin-chip">
+        <span class="res-icon">🪙</span>
+        <span class="res-value" id="coins-display">0</span>
+      </div>
+      <div class="resource-chip energy-chip">
+        <span class="res-icon">⚡</span>
+        <span class="res-value" id="energy-display">5</span>/5
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO CENTRAL -->
+  <div class="menu-logo">
+    <div class="menu-logo-glow"></div>
+    <div class="menu-logo-inner">
+      <div class="menu-leaf">🌿</div>
+      <div class="menu-brand">
+        <span class="brand-herbal">HERBAL</span>
+        <span class="brand-kingdom">KINGDOM</span>
+        <span class="brand-bolivia">✦ BOLIVIA ✦</span>
+      </div>
+    </div>
+    <!-- ALX badge under logo -->
+    <div class="alx-menu-badge">
+      <svg viewBox="0 0 70 26" xmlns="http://www.w3.org/2000/svg" class="alx-menu-svg">
+        <path d="M 2,23 L 12,3 L 22,23" stroke="#B8A88A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="6" y1="16" x2="18" y2="16" stroke="#D4A853" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M 27,3 L 27,23 L 39,23" stroke="#B8A88A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 45,3 L 67,23 M 67,3 L 45,23" stroke="#B8A88A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <p class="menu-tagline">Nutrición • Energía • Bienestar</p>
+  </div>
+
+  <!-- DAILY REWARD -->
+  <div class="daily-reward-banner" id="daily-reward-banner">
+    <span class="dr-icon">🎁</span>
+    <span class="dr-text">¡Recompensa diaria disponible!</span>
+    <button class="dr-btn" onclick="claimDailyReward()">RECLAMAR</button>
+  </div>
+
+  <!-- MAIN BUTTONS -->
+  <div class="menu-buttons">
+    <button class="btn-play" onclick="showScreen('level-select')">
+      <span class="btn-play-icon">▶</span>
+      <span class="btn-play-text">JUGAR</span>
+    </button>
+    <div class="menu-secondary">
+      <button class="btn-secondary" onclick="showScreen('shop-screen')">
+        <span>🛍️</span> Tienda
+      </button>
+      <button class="btn-secondary" onclick="showRanking()">
+        <span>🏆</span> Ranking
+      </button>
+      <button class="btn-secondary" onclick="showAchievements()">
+        <span>⭐</span> Logros
+      </button>
+    </div>
+  </div>
+
+  <div class="settings-row">
+    <button class="icon-btn" onclick="toggleMusic()" id="music-btn">🎵</button>
+    <button class="icon-btn" onclick="toggleSound()" id="sound-btn">🔊</button>
+    <button class="icon-btn" onclick="showProfile()">👤</button>
+    <button class="icon-btn" onclick="showSettings()">⚙️</button>
+  </div>
+</div>
+
+<!-- ==================== LEVEL SELECT ==================== -->
+<div id="level-select" class="screen">
+  <div class="level-header">
+    <button class="back-btn" onclick="showScreen('main-menu')">‹</button>
+    <h2 class="level-header-title">Selecciona Nivel</h2>
+    <div class="coins-small">🪙 <span id="coins-ls">0</span></div>
+  </div>
+  <!-- ALX subtle strip -->
+  <div class="alx-screen-strip">
+    <svg viewBox="0 0 70 22" xmlns="http://www.w3.org/2000/svg" class="alx-strip-svg">
+      <path d="M 1,19 L 9,3 L 17,19" stroke="rgba(200,184,154,0.35)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="4" y1="13" x2="14" y2="13" stroke="rgba(212,168,83,0.4)" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M 21,3 L 21,19 L 31,19" stroke="rgba(200,184,154,0.35)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 36,3 L 55,19 M 55,3 L 36,19" stroke="rgba(200,184,154,0.35)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="alx-strip-label">Valle del Bienestar</span>
+  </div>
+  <div class="level-grid" id="level-grid"></div>
+</div>
+
+<!-- ==================== GAMEPLAY ==================== -->
+<div id="gameplay" class="screen">
+  <div class="game-header">
+    <button class="back-btn" onclick="pauseGame()">‹</button>
+    <div class="game-info">
+      <div class="level-badge">Nivel <span id="current-level-display">1</span></div>
+      <div class="score-display">
+        <span class="score-label">SCORE</span>
+        <span class="score-value" id="score-display">0</span>
+      </div>
+    </div>
+    <!-- ALX HUD badge (top right) -->
+    <div class="alx-hud-badge">
+      <svg viewBox="0 0 46 18" xmlns="http://www.w3.org/2000/svg" class="alx-hud-svg">
+        <path d="M 1,16 L 8,2 L 15,16" stroke="rgba(200,184,154,0.5)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="3.5" y1="11" x2="12.5" y2="11" stroke="rgba(212,168,83,0.6)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M 18,2 L 18,16 L 26,16" stroke="rgba(200,184,154,0.5)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 30,2 L 45,16 M 45,2 L 30,16" stroke="rgba(200,184,154,0.5)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="game-resources">
+        <div class="moves-display">
+          <span class="moves-icon">👣</span>
+          <span class="moves-value" id="moves-display">25</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="objective-bar">
+    <div class="obj-title">OBJETIVO</div>
+    <div class="obj-items" id="obj-items"></div>
+  </div>
+
+  <div class="stars-bar">
+    <div class="star-marker" id="star1">⭐</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="star-marker" id="star2">⭐</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill2"></div>
+    </div>
+    <div class="star-marker" id="star3">⭐</div>
+  </div>
+
+  <div class="board-container">
+    <div class="board-wrapper" id="board-wrapper">
+      <div id="game-board" class="game-board"></div>
+      <div id="combo-display" class="combo-display"></div>
+    </div>
+  </div>
+
+  <div class="boosters-bar">
+    <div class="booster-title">POTENCIADORES</div>
+    <div class="boosters-row">
+      <button class="booster-btn" onclick="useBooster('bomb')" id="booster-bomb">
+        <span class="b-icon">💣</span>
+        <span class="b-label">Bomba</span>
+        <span class="b-count" id="bomb-count">3</span>
+      </button>
+      <button class="booster-btn" onclick="useBooster('lightning')" id="booster-lightning">
+        <span class="b-icon">⚡</span>
+        <span class="b-label">Rayo</span>
+        <span class="b-count" id="lightning-count">2</span>
+      </button>
+      <button class="booster-btn" onclick="useBooster('shuffle')" id="booster-shuffle">
+        <span class="b-icon">🔄</span>
+        <span class="b-label">Mezclar</span>
+        <span class="b-count" id="shuffle-count">1</span>
+      </button>
+      <button class="booster-btn" onclick="useBooster('aloe')" id="booster-aloe">
+        <span class="b-icon">🌿</span>
+        <span class="b-label">Aloe</span>
+        <span class="b-count" id="aloe-count">2</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== VICTORY SCREEN ==================== -->
+<div id="victory-screen" class="screen">
+  <div class="victory-bg">
+    <div class="v-circle vc1"></div>
+    <div class="v-circle vc2"></div>
+  </div>
+  <div class="victory-content">
+    <!-- ALX premium victory logo -->
+    <div class="alx-victory-logo" id="alx-victory-logo">
+      <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" class="alx-victory-svg">
+        <defs>
+          <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#F5F0E8"/>
+            <stop offset="50%"  stop-color="#EDE6D6"/>
+            <stop offset="100%" stop-color="#D4A853"/>
+          </linearGradient>
+          <linearGradient id="vGoldBar" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="transparent"/>
+            <stop offset="30%"  stop-color="#A8906A"/>
+            <stop offset="50%"  stop-color="#F0C060"/>
+            <stop offset="70%"  stop-color="#A8906A"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </linearGradient>
+          <filter id="vGlow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M 8,72 L 40,10 L 72,72"
+              stroke="url(#vGrad)" stroke-width="5.5" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" filter="url(#vGlow)"/>
+        <line x1="20" y1="52" x2="60" y2="52"
+              stroke="url(#vGoldBar)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 84,10 L 84,72 L 122,72"
+              stroke="url(#vGrad)" stroke-width="5.5" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" filter="url(#vGlow)"/>
+        <path d="M 136,10 L 194,72 M 194,10 L 136,72"
+              stroke="url(#vGrad)" stroke-width="5.5" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" filter="url(#vGlow)"/>
+      </svg>
+      <div class="alx-victory-sub">WELLNESS CLUB</div>
+    </div>
+
+    <div class="victory-title">¡NIVEL COMPLETO!</div>
+    <div class="stars-earned" id="stars-earned">
+      <span class="star-earn" id="se1">⭐</span>
+      <span class="star-earn" id="se2">⭐</span>
+      <span class="star-earn" id="se3">⭐</span>
+    </div>
+    <div class="victory-score">
+      <div class="vs-label">PUNTUACIÓN</div>
+      <div class="vs-value" id="victory-score-val">0</div>
+    </div>
+    <div class="victory-reward" id="victory-reward">
+      <div class="vr-icon">🎁</div>
+      <div class="vr-text" id="vr-text">+50 🪙 Batido Premium</div>
+    </div>
+    <div class="victory-coins">
+      <span class="vc-earned" id="coins-earned-display">+0 🪙</span>
+    </div>
+    <div class="victory-buttons">
+      <button class="btn-next" onclick="nextLevel()">SIGUIENTE NIVEL ›</button>
+      <button class="btn-menu" onclick="showScreen('main-menu')">🏠 MENÚ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DEFEAT SCREEN ==================== -->
+<div id="defeat-screen" class="screen">
+  <div class="defeat-bg"></div>
+  <div class="defeat-content">
+    <div class="defeat-icon">💔</div>
+    <div class="defeat-title">¡Sin movimientos!</div>
+    <div class="defeat-subtitle">Tu bienestar te espera</div>
+    <div class="defeat-score">Score: <span id="defeat-score-val">0</span></div>
+    <!-- ALX subtle on defeat -->
+    <div class="alx-defeat-badge">
+      <svg viewBox="0 0 70 26" xmlns="http://www.w3.org/2000/svg" class="alx-defeat-svg">
+        <path d="M 2,23 L 12,3 L 22,23" stroke="rgba(200,184,154,0.25)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="6" y1="16" x2="18" y2="16" stroke="rgba(212,168,83,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 27,3 L 27,23 L 39,23" stroke="rgba(200,184,154,0.25)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 45,3 L 67,23 M 67,3 L 45,23" stroke="rgba(200,184,154,0.25)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="defeat-buttons">
+      <button class="btn-retry" onclick="retryLevel()">
+        <span>🔄</span> REINTENTAR
+      </button>
+      <button class="btn-continue-gold" onclick="continueWithCoins()">
+        <span>💛</span> CONTINUAR (30 🪙)
+      </button>
+      <button class="btn-menu-small" onclick="showScreen('main-menu')">🏠 Menú</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SHOP SCREEN ==================== -->
+<div id="shop-screen" class="screen">
+  <div class="shop-header">
+    <button class="back-btn" onclick="showScreen('main-menu')">‹</button>
+    <div class="shop-title-wrap">
+      <h2>Tienda Wellness</h2>
+      <div class="alx-shop-badge">
+        <svg viewBox="0 0 46 18" xmlns="http://www.w3.org/2000/svg" class="alx-shop-svg">
+          <path d="M 1,16 L 8,2 L 15,16" stroke="rgba(200,184,154,0.5)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="3.5" y1="11" x2="12.5" y2="11" stroke="rgba(212,168,83,0.6)" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M 18,2 L 18,16 L 26,16" stroke="rgba(200,184,154,0.5)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 30,2 L 45,16 M 45,2 L 30,16" stroke="rgba(200,184,154,0.5)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="coins-small">🪙 <span id="coins-shop">0</span></div>
+  </div>
+  <div class="shop-content">
+    <div class="shop-section-title">🌟 Recompensas Especiales</div>
+    <div class="shop-grid" id="shop-grid"></div>
+    <div class="shop-section-title">⚡ Potenciadores</div>
+    <div class="shop-grid" id="booster-grid"></div>
+  </div>
+</div>
+
+<!-- ==================== PAUSE OVERLAY ==================== -->
+<div id="pause-overlay" class="overlay">
+  <div class="pause-card">
+    <!-- ALX in pause card -->
+    <div class="alx-pause-logo">
+      <svg viewBox="0 0 90 36" xmlns="http://www.w3.org/2000/svg" class="alx-pause-svg">
+        <defs>
+          <linearGradient id="pauseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#F5F0E8"/>
+            <stop offset="100%" stop-color="#C8B89A"/>
+          </linearGradient>
+        </defs>
+        <path d="M 2,32 L 16,4 L 30,32" stroke="url(#pauseGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="7" y1="23" x2="25" y2="23" stroke="#D4A853" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 36,4 L 36,32 L 53,32" stroke="url(#pauseGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 59,4 L 88,32 M 88,4 L 59,32" stroke="url(#pauseGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="alx-pause-sub">HERBAL KINGDOM</span>
+    </div>
+    <div class="pause-title">EN PAUSA</div>
+    <button class="pause-btn" onclick="resumeGame()">▶ CONTINUAR</button>
+    <button class="pause-btn secondary" onclick="retryLevel()">🔄 REINTENTAR</button>
+    <button class="pause-btn secondary" onclick="showScreen('main-menu')">🏠 MENÚ PRINCIPAL</button>
+    <div class="pause-settings">
+      <button class="icon-btn" onclick="toggleMusic()">🎵</button>
+      <button class="icon-btn" onclick="toggleSound()">🔊</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST & COINS ANIMATION -->
+<div id="toast" class="toast"></div>
+<div id="coin-animations" class="coin-animations"></div>
+
+<script src="game.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>
